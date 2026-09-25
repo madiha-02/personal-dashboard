@@ -7,7 +7,7 @@
 <meta name="description" content="Personal dashboard and resume site.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -22,55 +22,15 @@
   <aside class="sidebar" id="sidebar">
     <div class="profile">
       <div class="avatar-wrap" id="avatarWrap">
-        <svg class="avatar" id="avatarSvg" viewBox="0 0 200 200" role="img" aria-label="Cartoon avatar">
-          <defs>
-            <clipPath id="headClip"><circle cx="100" cy="100" r="78"/></clipPath>
-          </defs>
-          <circle class="av-bg" cx="100" cy="100" r="90"/>
-          <g clip-path="url(#headClip)">
-            <!-- blazer / collar hint at bottom edge -->
-            <path class="av-blazer" d="M18 210 L70 160 L100 182 L130 160 L182 210 Z"/>
-            <path class="av-collar" d="M86 162 L100 184 L114 162 L104 158 L100 168 L96 158 Z"/>
-            <rect class="av-neck" x="86" y="140" width="28" height="38" rx="10"/>
-
-            <circle class="av-face" cx="100" cy="104" r="72"/>
-
-            <!-- hair back mass / low bun sides -->
-            <path class="av-hair-back" d="M24 90 C18 130 26 168 42 196 L58 190 C46 155 42 118 46 86 Z"/>
-            <path class="av-hair-back" d="M176 90 C182 130 174 168 158 196 L142 190 C154 155 158 118 154 86 Z"/>
-
-            <!-- smooth top hair dome -->
-            <path class="av-hair" d="M24 88 C20 28 58 18 100 18 C142 18 180 28 176 88 C176 58 150 40 100 40 C50 40 24 58 24 88 Z"/>
-
-            <!-- soft poofy bangs -->
-            <g class="av-hair">
-              <circle cx="48" cy="60" r="15"/>
-              <circle cx="70" cy="54" r="16"/>
-              <circle cx="92" cy="52" r="16"/>
-              <circle cx="114" cy="52" r="16"/>
-              <circle cx="136" cy="54" r="16"/>
-              <circle cx="156" cy="60" r="15"/>
-            </g>
-
-            <path class="av-brow" d="M56 82 Q74 73 92 80" />
-            <path class="av-brow" d="M108 80 Q126 73 144 82" />
-
-            <path class="av-mouth" d="M82 144 Q100 156 118 144 Q100 152 82 144 Z" />
+        <img class="avatar-photo" src="assets/avatar.jpg" alt="Cartoon avatar of Madiha">
+        <svg class="avatar-eyes" id="avatarSvg" viewBox="0 0 480 480" role="img" aria-label="Cursor-tracking eyes">
+          <g class="eye" id="eyeL" data-cx="128" data-cy="248">
+            <circle class="pupil" id="pupilL" cx="128" cy="248" r="27"/>
+            <circle class="pupil-glint" id="glintL" cx="117" cy="236" r="6"/>
           </g>
-
-          <g class="eye" id="eyeL" data-cx="75" data-cy="104">
-            <ellipse class="eye-white" cx="75" cy="104" rx="17" ry="19"/>
-            <circle class="iris" id="irisL" cx="75" cy="104" r="9.5"/>
-            <circle class="pupil" id="pupilL" cx="75" cy="104" r="4.5"/>
-            <circle class="pupil-glint" id="glintL" cx="71" cy="99.5" r="2.2"/>
-            <path class="eyelid" d="M55 90 Q75 78 95 90" />
-          </g>
-          <g class="eye" id="eyeR" data-cx="125" data-cy="104">
-            <ellipse class="eye-white" cx="125" cy="104" rx="17" ry="19"/>
-            <circle class="iris" id="irisR" cx="125" cy="104" r="9.5"/>
-            <circle class="pupil" id="pupilR" cx="125" cy="104" r="4.5"/>
-            <circle class="pupil-glint" id="glintR" cx="121" cy="99.5" r="2.2"/>
-            <path class="eyelid" d="M105 90 Q125 78 145 90" />
+          <g class="eye" id="eyeR" data-cx="271" data-cy="244">
+            <circle class="pupil" id="pupilR" cx="271" cy="244" r="27"/>
+            <circle class="pupil-glint" id="glintR" cx="260" cy="232" r="6"/>
           </g>
         </svg>
       </div>

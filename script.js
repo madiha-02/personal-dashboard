@@ -76,6 +76,27 @@ const panels = document.querySelectorAll(".panel");
 const sidebar = document.getElementById("sidebar");
 const navToggle = document.getElementById("navToggle");
 const sidebarBackdrop = document.getElementById("sidebarBackdrop");
+const navEl = document.querySelector(".nav");
+
+// The nav starts hidden and reveals itself on the visitor's first scroll/wheel/touch
+// gesture, or on Tab focus, or after a short delay so it's never permanently stuck
+// hidden for someone who never scrolls (keyboard/screen-reader users, short panels, etc).
+function revealNav() {
+  navEl.classList.add("revealed");
+  window.removeEventListener("wheel", revealNav);
+  window.removeEventListener("scroll", revealNav);
+  window.removeEventListener("touchmove", revealNav);
+  window.removeEventListener("keydown", onKeydownReveal);
+  clearTimeout(navRevealFallback);
+}
+function onKeydownReveal(e) {
+  if (e.key === "Tab") revealNav();
+}
+window.addEventListener("wheel", revealNav, { passive: true });
+window.addEventListener("scroll", revealNav, { passive: true });
+window.addEventListener("touchmove", revealNav, { passive: true });
+window.addEventListener("keydown", onKeydownReveal);
+const navRevealFallback = setTimeout(revealNav, 3500);
 
 let backdropHideTimer = null;
 
@@ -108,6 +129,7 @@ document.querySelectorAll("[data-goto]").forEach(el => {
 });
 
 navToggle.addEventListener("click", () => {
+  revealNav(); // opening the drawer is itself an intentional "show me the nav" gesture
   setSidebarOpen(!sidebar.classList.contains("open"));
 });
 
@@ -121,17 +143,19 @@ showSection(validSections.has(initial) ? initial : "about");
 // Avatar eye tracking
 // ---------------------------------------------------------------------------
 const eyes = [
-  { group: document.getElementById("eyeL"), iris: document.getElementById("irisL"), pupil: document.getElementById("pupilL"), glint: document.getElementById("glintL") },
-  { group: document.getElementById("eyeR"), iris: document.getElementById("irisR"), pupil: document.getElementById("pupilR"), glint: document.getElementById("glintR") }
+  { group: document.getElementById("eyeL"), pupil: document.getElementById("pupilL"), glint: document.getElementById("glintL") },
+  { group: document.getElementById("eyeR"), pupil: document.getElementById("pupilR"), glint: document.getElementById("glintR") }
 ];
 const avatarSvg = document.getElementById("avatarSvg");
-const MAX_PUPIL_OFFSET = 5.5;
+// The overlay pupils sit on top of hand-drawn eyes in the photo, which leaves very
+// little room to move before spilling outside the original eye outline — keep this small.
+const MAX_PUPIL_OFFSET = 6;
 
 function moveEyes(clientX, clientY) {
   const svgRect = avatarSvg.getBoundingClientRect();
-  const viewBoxScale = 200 / svgRect.width; // svg viewBox is 200x200
+  const viewBoxScale = 480 / svgRect.width; // svg viewBox is 480x480
 
-  eyes.forEach(({ group, iris, pupil, glint }) => {
+  eyes.forEach(({ group, pupil, glint }) => {
     const cx = parseFloat(group.dataset.cx);
     const cy = parseFloat(group.dataset.cy);
 
@@ -147,8 +171,6 @@ function moveEyes(clientX, clientY) {
     const px = cx + Math.cos(angle) * dist;
     const py = cy + Math.sin(angle) * dist;
 
-    iris.setAttribute("cx", px);
-    iris.setAttribute("cy", py);
     pupil.setAttribute("cx", px);
     pupil.setAttribute("cy", py);
     glint.setAttribute("cx", px - 4);
@@ -175,13 +197,11 @@ window.addEventListener("touchmove", e => {
 function idleLoop() {
   if (!usingPointer) {
     idleAngle += 0.015;
-    eyes.forEach(({ group, iris, pupil, glint }) => {
+    eyes.forEach(({ group, pupil, glint }) => {
       const cx = parseFloat(group.dataset.cx);
       const cy = parseFloat(group.dataset.cy);
       const px = cx + Math.cos(idleAngle) * 2;
       const py = cy + Math.sin(idleAngle * 0.6) * 1.2;
-      iris.setAttribute("cx", px);
-      iris.setAttribute("cy", py);
       pupil.setAttribute("cx", px);
       pupil.setAttribute("cy", py);
       glint.setAttribute("cx", px - 4);
