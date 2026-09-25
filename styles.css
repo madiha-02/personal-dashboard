@@ -68,8 +68,14 @@ button {
   display: flex;
   flex-direction: column;
   gap: 26px;
-  position: sticky;
+  /* fixed (not sticky) so it always spans the full viewport height regardless of
+     how tall the active panel's content is — sticky's box is capped at its own
+     height, so once a tall panel (the About hero) pushed the page well past one
+     viewport, the sidebar ran out and its background stopped short of the page's
+     actual bottom. */
+  position: fixed;
   top: 0;
+  left: 0;
   height: 100vh;
   overflow-y: auto;
 }
@@ -80,7 +86,7 @@ button {
 
 /* Static base sized to fully cover the artwork's own iris+pupil at every possible
    pupil offset, so movement never uncovers the original drawn eye underneath. */
-.iris-base { fill: #a05b22; }
+.iris-base { fill: #6e3d15; }
 .pupil { fill: #3a2416; transition: transform 0.02s linear; }
 .pupil-glint { fill: #fff; opacity: 0.9; }
 
@@ -194,6 +200,7 @@ button {
 
 .content {
   flex: 1;
+  margin-left: var(--sidebar-w); /* sidebar is position:fixed, so reserve its space manually */
   padding: 46px 50px 80px;
   max-width: 940px;
 }
@@ -752,14 +759,11 @@ button {
 }
 
 @media (max-width: 880px) {
-  .content { padding: 80px 20px 60px; max-width: 100%; }
+  .content { margin-left: 0; padding: 80px 20px 60px; max-width: 100%; }
 
   .nav-toggle { display: flex; }
 
   .sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
     z-index: 55;
     transform: translateX(-100%);
     transition: transform 0.22s ease;
