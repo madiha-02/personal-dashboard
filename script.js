@@ -353,47 +353,47 @@ const chatSuggestions = document.getElementById("chatSuggestions");
 const RULES = [
   {
     keywords: ["hello", "hi", "hey"],
-    reply: `Hi! I'm a small rule-based assistant that knows ${CONFIG.name.split(" ")[0]}'s background. Ask me about skills, experience, projects, or how to get in touch.`
+    reply: `Hi, I'm ${CONFIG.name.split(" ")[0]} — well, a small rule-based version of me. Ask me about my skills, experience, projects, or how to get in touch.`
   },
   {
     keywords: ["what do you do", "what does she do", "role", "job", "current job", "who are you"],
-    reply: `${CONFIG.name} is a ${CONFIG.title}, currently a Software Developer at Kilowott, working across React/Next.js frontend, React Native mobile, and Fastify/Prisma backend.`
+    reply: `I'm a ${CONFIG.title}, currently at Kilowott, working across React/Next.js frontend, React Native mobile, and Fastify/Prisma backend.`
   },
   {
     keywords: ["skill", "tech stack", "technologies", "stack", "language"],
-    reply: `Core skills: ${CONFIG.skills.slice(0, 8).join(", ")}, and more — see the full list in the About tab.`
+    reply: `My core skills: ${CONFIG.skills.slice(0, 8).join(", ")}, and more — see the full list in the About tab.`
   },
   {
     keywords: ["experience", "work history", "career", "kilowott", "remote software"],
-    reply: `Currently a Software Developer at Kilowott since Jun 2024 (Next.js, React Native, Fastify/Prisma). Before that, a Web Developer Intern at Remote Software Solutions (Jul 2023–Apr 2024). Full details are in the Experience tab.`
+    reply: `I'm currently a Software Developer at Kilowott since Jun 2024 (Next.js, React Native, Fastify/Prisma). Before that, I was a Web Developer Intern at Remote Software Solutions (Jul 2023–Apr 2024). Full details are in the Experience tab.`
   },
   {
     keywords: ["education", "degree", "college", "university", "study"],
-    reply: `Bachelor of Computer Engineering from Agnel Institute of Technology and Design, Goa (May 2024).`
+    reply: `I have a Bachelor of Computer Engineering from Agnel Institute of Technology and Design, Goa (May 2024).`
   },
   {
     keywords: ["project", "built", "portfolio", "github repo"],
-    reply: `A couple of highlights: "Fatal Press" (a React news app) and "Text Converter" (a JS text-utility tool). Check the Projects tab for details and source links — more are on the way.`
+    reply: `A couple of highlights: "Fatal Press" (a React news app) and "Text Converter" (a JS text-utility tool) — both mine. Check the Projects tab for details and source links, more are on the way.`
   },
   {
     keywords: ["contact", "email", "reach", "hire", "available", "linkedin"],
-    reply: `Best way to reach out is email: ${CONFIG.email}, or check the GitHub profile linked in the sidebar. Full details in the Contact tab.`
+    reply: `Best way to reach me is email: ${CONFIG.email}, or check my GitHub profile linked in the sidebar. Full details in the Contact tab.`
   },
   {
     keywords: ["location", "based", "where", "goa", "mapusa"],
-    reply: `Based in Mapusa, Goa, India — open to remote work.`
+    reply: `I'm based in Mapusa, Goa, India — open to remote work.`
   },
   {
     keywords: ["cv", "resume"],
-    reply: `You can view or download the CV from the button at the bottom of the sidebar.`
+    reply: `You can view or download my CV from the button at the bottom of the sidebar.`
   },
   {
     keywords: ["react native", "mobile"],
-    reply: `Yes — built a React Native / Expo app at Kilowott that shares 98% of its code with the web app, using NativeWind for styling.`
+    reply: `Yes — I built a React Native / Expo app at Kilowott that shares 98% of its code with the web app, using NativeWind for styling.`
   },
   {
     keywords: ["accessibility", "wcag", "a11y"],
-    reply: `Implemented WCAG AA accessibility improvements as part of the Kilowott frontend work.`
+    reply: `I implemented WCAG AA accessibility improvements as part of the Kilowott frontend work.`
   },
   {
     keywords: ["thank", "thanks"],
@@ -402,8 +402,8 @@ const RULES = [
 ];
 
 const FALLBACKS = [
-  `I don't have a hardcoded answer for that yet — try asking about skills, experience, projects, or contact info.`,
-  `I'm just a small rule-based bot, so I only know a fixed set of topics: background, skills, experience, projects, and contact. Try one of those!`
+  `I don't have a hardcoded answer for that yet — try asking about my skills, experience, projects, or contact info.`,
+  `I'm just a small rule-based version of ${CONFIG.name.split(" ")[0]}, so I only know a fixed set of topics: background, skills, experience, projects, and contact. Try one of those!`
 ];
 
 function addBubble(text, sender) {
@@ -449,4 +449,4 @@ SUGGESTIONS.forEach(text => {
   chatSuggestions.appendChild(btn);
 });
 
-addBubble(`Hi! Ask me anything about ${CONFIG.name.split(" ")[0]}'s background — try one of the suggestions below.`, "bot");
+addBubble(`Hi, I'm ${CONFIG.name.split(" ")[0]}! Ask me anything about my background — try one of the suggestions below.`, "bot");
