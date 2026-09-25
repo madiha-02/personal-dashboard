@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Madiha Shaikh — CV</title>
+<style>
+  :root {
+    --ink: #1c2333;
+    --dim: #5b6479;
+    --line: #dfe3ec;
+    --accent: #0d9488;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: var(--ink);
+    background: #f4f5f8;
+    margin: 0;
+    padding: 40px 16px 80px;
+  }
+  .sheet {
+    max-width: 760px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 48px 52px;
+    border-radius: 10px;
+    box-shadow: 0 4px 24px rgba(20,25,40,0.08);
+  }
+  h1 { margin: 0 0 4px; font-size: 1.8rem; }
+  .title { color: var(--accent); font-weight: 600; margin: 0 0 10px; }
+  .meta { color: var(--dim); font-size: 0.9rem; margin: 0; }
+  .meta a { color: var(--dim); text-decoration: none; }
+  hr { border: none; border-top: 1px solid var(--line); margin: 26px 0; }
+  h2 {
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin: 0 0 14px;
+  }
+  section { margin-bottom: 26px; }
+  .entry { margin-bottom: 18px; }
+  .entry:last-child { margin-bottom: 0; }
+  .entry-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .entry-head strong { font-size: 1rem; }
+  .entry-org { color: var(--dim); font-size: 0.9rem; }
+  .entry-date { color: var(--dim); font-size: 0.85rem; white-space: nowrap; }
+  ul { margin: 8px 0 0; padding-left: 18px; color: #333c4f; line-height: 1.55; font-size: 0.92rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip {
+    background: #eef2f6;
+    border-radius: 999px;
+    padding: 4px 11px;
+    font-size: 0.78rem;
+    color: #33415c;
+  }
+  .print-bar {
+    max-width: 760px;
+    margin: 0 auto 16px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .print-bar button {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .sheet { box-shadow: none; padding: 0; }
+    .print-bar { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="print-bar">
+  <button onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<div class="sheet">
+  <h1>Madiha Shaikh</h1>
+  <p class="title">Frontend-focused Software Developer</p>
+  <p class="meta">
+    Mapusa, Goa, India &nbsp;·&nbsp;
+    <a href="mailto:madihashaikh2245@gmail.com">madihashaikh2245@gmail.com</a> &nbsp;·&nbsp;
+    <a href="https://github.com/madiha-02">github.com/madiha-02</a>
+  </p>
+
+  <hr>
+
+  <section>
+    <h2>Summary</h2>
+    <p style="color:#333c4f; line-height:1.6; margin:0;">
+      Software Developer specializing in React and React Native, with full-stack experience
+      spanning Next.js frontends, Fastify/Prisma backends, and CI/CD pipelines. Comfortable
+      owning a feature end to end — from UI to API to deployment.
+    </p>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+
+    <div class="entry">
+      <div class="entry-head">
+        <strong>Software Developer — Kilowott</strong>
+        <span class="entry-date">Jun 2024 – Present</span>
+      </div>
+      <ul>
+        <li>Built Next.js SSR frontend features including a Mux video player and Stripe subscription billing</li>
+        <li>Implemented WCAG AA accessibility improvements and Norwegian localization</li>
+        <li>Developed a React Native / Expo app sharing 98% of its code with the web app</li>
+        <li>Built Fastify APIs with Prisma/PostgreSQL, including Stripe webhook handling</li>
+        <li>Maintained GitHub Actions CI/CD pipelines</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <strong>Web Developer Intern — Remote Software Solutions</strong>
+        <span class="entry-date">Jul 2023 – Apr 2024</span>
+      </div>
+      <ul>
+        <li>Built responsive React components in an Agile sprint cycle</li>
+        <li>Participated in peer code reviews and iterative feature delivery</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="entry">
+      <div class="entry-head">
+        <strong>Bachelor of Computer Engineering</strong>
+        <span class="entry-date">May 2024</span>
+      </div>
+      <div class="entry-org">Agnel Institute of Technology and Design, Goa</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <div class="chips">
+      <span class="chip">React</span>
+      <span class="chip">React Native</span>
+      <span class="chip">Next.js</span>
+      <span class="chip">TypeScript</span>
+      <span class="chip">Node.js</span>
+      <span class="chip">Fastify</span>
+      <span class="chip">Prisma</span>
+      <span class="chip">PostgreSQL</span>
+      <span class="chip">Supabase</span>
+      <span class="chip">Stripe</span>
+      <span class="chip">Tailwind / NativeWind</span>
+      <span class="chip">GitHub Actions / CI-CD</span>
+      <span class="chip">REST APIs</span>
+      <span class="chip">i18n / Localization</span>
+      <span class="chip">Accessibility (WCAG)</span>
+    </div>
+  </section>
+
+  <section style="margin-bottom:0;">
+    <h2>Projects</h2>
+    <div class="entry">
+      <div class="entry-head"><strong>Fatal Press — News App</strong></div>
+      <div class="entry-org">github.com/madiha-02/Fatal-press-NewsApp-</div>
+    </div>
+    <div class="entry" style="margin-top:10px;">
+      <div class="entry-head"><strong>Text Converter</strong></div>
+      <div class="entry-org">github.com/madiha-02/text-converter</div>
+    </div>
+  </section>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Software Developer</title>
+<meta name="description" content="Personal dashboard and resume site.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+<div class="app">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="profile">
+      <div class="avatar-wrap" id="avatarWrap">
+        <svg class="avatar" id="avatarSvg" viewBox="0 0 200 200" role="img" aria-label="Cartoon avatar">
+          <defs>
+            <clipPath id="headClip"><circle cx="100" cy="100" r="78"/></clipPath>
+          </defs>
+          <circle class="av-bg" cx="100" cy="100" r="90"/>
+          <g clip-path="url(#headClip)">
+            <!-- blazer / collar hint at bottom edge -->
+            <path class="av-blazer" d="M18 210 L70 160 L100 182 L130 160 L182 210 Z"/>
+            <path class="av-collar" d="M86 162 L100 184 L114 162 L104 158 L100 168 L96 158 Z"/>
+            <rect class="av-neck" x="86" y="140" width="28" height="38" rx="10"/>
+
+            <circle class="av-face" cx="100" cy="104" r="72"/>
+
+            <!-- hair back mass / low bun sides -->
+            <path class="av-hair-back" d="M24 90 C18 130 26 168 42 196 L58 190 C46 155 42 118 46 86 Z"/>
+            <path class="av-hair-back" d="M176 90 C182 130 174 168 158 196 L142 190 C154 155 158 118 154 86 Z"/>
+
+            <!-- smooth top hair dome -->
+            <path class="av-hair" d="M24 88 C20 28 58 18 100 18 C142 18 180 28 176 88 C176 58 150 40 100 40 C50 40 24 58 24 88 Z"/>
+
+            <!-- soft poofy bangs -->
+            <g class="av-hair">
+              <circle cx="48" cy="60" r="15"/>
+              <circle cx="70" cy="54" r="16"/>
+              <circle cx="92" cy="52" r="16"/>
+              <circle cx="114" cy="52" r="16"/>
+              <circle cx="136" cy="54" r="16"/>
+              <circle cx="156" cy="60" r="15"/>
+            </g>
+
+            <path class="av-brow" d="M56 82 Q74 73 92 80" />
+            <path class="av-brow" d="M108 80 Q126 73 144 82" />
+
+            <path class="av-mouth" d="M82 144 Q100 156 118 144 Q100 152 82 144 Z" />
+          </g>
+
+          <g class="eye" id="eyeL" data-cx="75" data-cy="104">
+            <ellipse class="eye-white" cx="75" cy="104" rx="17" ry="19"/>
+            <circle class="iris" id="irisL" cx="75" cy="104" r="9.5"/>
+            <circle class="pupil" id="pupilL" cx="75" cy="104" r="4.5"/>
+            <circle class="pupil-glint" id="glintL" cx="71" cy="99.5" r="2.2"/>
+            <path class="eyelid" d="M55 90 Q75 78 95 90" />
+          </g>
+          <g class="eye" id="eyeR" data-cx="125" data-cy="104">
+            <ellipse class="eye-white" cx="125" cy="104" rx="17" ry="19"/>
+            <circle class="iris" id="irisR" cx="125" cy="104" r="9.5"/>
+            <circle class="pupil" id="pupilR" cx="125" cy="104" r="4.5"/>
+            <circle class="pupil-glint" id="glintR" cx="121" cy="99.5" r="2.2"/>
+            <path class="eyelid" d="M105 90 Q125 78 145 90" />
+          </g>
+        </svg>
+      </div>
+      <h1 class="profile-name">Madiha Shaikh</h1>
+      <p class="profile-title">Frontend-focused Software Developer</p>
+      <p class="profile-location">📍 Mapusa, Goa, India</p>
+    </div>
+
+    <nav class="nav" aria-label="Primary">
+      <button class="nav-link active" data-section="about">
+        <span class="nav-icon">◆</span> About
+      </button>
+      <button class="nav-link" data-section="experience">
+        <span class="nav-icon">▤</span> Experience
+      </button>
+      <button class="nav-link" data-section="projects">
+        <span class="nav-icon">▣</span> Projects
+      </button>
+      <button class="nav-link" data-section="chat">
+        <span class="nav-icon">◎</span> Ask My Assistant
+      </button>
+      <button class="nav-link" data-section="contact">
+        <span class="nav-icon">✉</span> Contact
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a class="cv-btn" href="cv.html" target="_blank" rel="noopener">⬇ View / Download CV</a>
+      <div class="social-row">
+        <a href="https://github.com/madiha-02" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+        <a id="linkedinLink" href="#" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+      </div>
+    </div>
+  </aside>
+
+  <main class="content">
+
+    <section class="panel active" id="about" data-section="about">
+      <header class="panel-header">
+        <h2>About Me</h2>
+        <p class="eyebrow">Who I am</p>
+      </header>
+      <div class="card">
+        <p>
+          Hi, I'm Madiha — a Software Developer based in Mapusa, Goa, who likes building things
+          that work smoothly on both the front end and the systems behind it. My focus is React
+          and React Native, but day to day that stretches into Next.js, TypeScript, and the
+          backend APIs that feed them.
+        </p>
+        <p>
+          At my current job I ship features across the whole stack: server-rendered pages,
+          video playback, subscription billing, accessibility, localization, a mobile app that
+          shares almost all of its code with the web app, and the CI/CD pipeline that ships it
+          all. I like the kind of problem where "make it work" and "make it work well" are the
+          same requirement.
+        </p>
+        <p>
+          Outside of assigned work, I build small full-stack side projects to learn new corners
+          of the stack — see the <button class="link-btn" data-goto="projects">Projects</button>
+          tab. This site itself is one of them: no framework, no build step, just HTML, CSS and
+          JavaScript, hosted for free.
+        </p>
+      </div>
+
+      <div class="skills-card card">
+        <h3>Skills</h3>
+        <div class="chip-row" id="skillChips"></div>
+      </div>
+    </section>
+
+    <section class="panel" id="experience" data-section="experience">
+      <header class="panel-header">
+        <h2>Work Experience</h2>
+        <p class="eyebrow">Where I've been</p>
+      </header>
+
+      <ol class="timeline" id="timeline"></ol>
+    </section>
+
+    <section class="panel" id="projects" data-section="projects">
+      <header class="panel-header">
+        <h2>What I've Built</h2>
+        <p class="eyebrow">Selected projects</p>
+      </header>
+      <div class="project-grid" id="projectGrid"></div>
+    </section>
+
+    <section class="panel" id="chat" data-section="chat">
+      <header class="panel-header">
+        <h2>Ask My Assistant</h2>
+        <p class="eyebrow">A small, rule-based bot that knows my background</p>
+      </header>
+      <div class="card chat-card">
+        <div class="chat-window" id="chatWindow" role="log" aria-live="polite"></div>
+        <div class="chat-suggestions" id="chatSuggestions"></div>
+        <form class="chat-input-row" id="chatForm">
+          <input type="text" id="chatInput" placeholder="Ask about skills, experience, projects…" autocomplete="off" aria-label="Ask a question">
+          <button type="submit">Send</button>
+        </form>
+        <p class="chat-disclaimer">Runs entirely in your browser — no API calls, no data leaves this page.</p>
+      </div>
+    </section>
+
+    <section class="panel" id="contact" data-section="contact">
+      <header class="panel-header">
+        <h2>Get in Touch</h2>
+        <p class="eyebrow">Let's talk</p>
+      </header>
+      <div class="card contact-card">
+        <a class="contact-row" id="contactEmail" href="#">
+          <span class="contact-icon">✉</span>
+          <span>
+            <strong>Email</strong>
+            <span class="contact-value" id="contactEmailValue">—</span>
+          </span>
+        </a>
+        <a class="contact-row" href="https://github.com/madiha-02" target="_blank" rel="noopener">
+          <span class="contact-icon">⌥</span>
+          <span>
+            <strong>GitHub</strong>
+            <span class="contact-value">github.com/madiha-02</span>
+          </span>
+        </a>
+        <a class="contact-row" id="contactLinkedin" href="#" target="_blank" rel="noopener">
+          <span class="contact-icon">in</span>
+          <span>
+            <strong>LinkedIn</strong>
+            <span class="contact-value" id="linkedinValue">Add your profile URL</span>
+          </span>
+        </a>
+        <button class="contact-row copy-row" id="copyEmailBtn" type="button">
+          <span class="contact-icon">⧉</span>
+          <span>
+            <strong>Copy email address</strong>
+            <span class="contact-value">Click to copy to clipboard</span>
+          </span>
+        </button>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
