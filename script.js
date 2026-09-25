@@ -57,7 +57,8 @@ const CONFIG = {
       description: "A news reading application built with React, focused on clean article browsing and a fast, responsive UI.",
       tags: ["React", "JavaScript"],
       github: "https://github.com/madiha-02/Fatal-press-NewsApp-",
-      live: "https://fatal-press-newsapp-jm46h8amp-madiha15.vercel.app/"
+      live: "https://fatal-press-newsapp.vercel.app/",
+      preview: "assets/projects/fatal-press.png"
     },
     {
       name: "Text Converter",
@@ -266,9 +267,10 @@ function openProjectModal(project) {
       <div class="chip-row project-tags">
         ${project.tags.map(t => `<span class="chip">${t}</span>`).join("")}
       </div>
-      <div class="modal-preview">
-        ${project.live ? "Live demo available below, or browse the source on GitHub." : "Live UI preview coming soon — for now, browse the source on GitHub."}
-      </div>
+      ${project.preview
+        ? `<img class="modal-preview-img" src="${project.preview}" alt="${project.name} screenshot">`
+        : `<div class="modal-preview">Live UI preview coming soon — for now, browse the source on GitHub.</div>`
+      }
       <div class="modal-links">
         <a href="${project.github}" target="_blank" rel="noopener">View source on GitHub →</a>
         ${project.live ? `<a href="${project.live}" target="_blank" rel="noopener">Live demo →</a>` : ""}

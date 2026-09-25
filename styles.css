@@ -550,6 +550,15 @@ button {
   font-size: 0.85rem;
 }
 
+.modal-preview-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
 .modal-links { display: flex; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
 
 .modal-links a {
