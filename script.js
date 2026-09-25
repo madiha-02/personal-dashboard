@@ -114,10 +114,13 @@ function setSidebarOpen(open) {
 }
 
 function showSection(id) {
-  panels.forEach(p => p.classList.toggle("active", p.id === id));
+  panels.forEach(p => p.classList.toggle("active", p.dataset.section === id));
   navLinks.forEach(n => n.classList.toggle("active", n.dataset.section === id));
   setSidebarOpen(false);
-  if (history.replaceState) history.replaceState(null, "", "#" + id);
+  // Deliberately not a real element id (avoids "#about" etc. colliding with the
+  // section's own id="about" — some browsers auto-scroll to a same-named element
+  // the instant replaceState sets a matching fragment, causing an unwanted jump).
+  if (history.replaceState) history.replaceState(null, "", "#section-" + id);
 }
 
 navLinks.forEach(link => {
@@ -135,7 +138,7 @@ navToggle.addEventListener("click", () => {
 
 sidebarBackdrop.addEventListener("click", () => setSidebarOpen(false));
 
-const initial = (location.hash || "#about").slice(1);
+const initial = (location.hash || "#section-about").replace(/^#(section-)?/, "");
 const validSections = new Set(["about", "experience", "projects", "chat", "contact"]);
 showSection(validSections.has(initial) ? initial : "about");
 
@@ -146,14 +149,14 @@ const eyes = [
   { group: document.getElementById("eyeL"), pupil: document.getElementById("pupilL"), glint: document.getElementById("glintL") },
   { group: document.getElementById("eyeR"), pupil: document.getElementById("pupilR"), glint: document.getElementById("glintR") }
 ];
-const avatarSvg = document.getElementById("avatarSvg");
+const avatarSvg = document.getElementById("heroEyesSvg");
 // The overlay pupils sit on top of hand-drawn eyes in the photo, which leaves very
 // little room to move before spilling outside the original eye outline — keep this small.
-const MAX_PUPIL_OFFSET = 6;
+const MAX_PUPIL_OFFSET = 8;
 
 function moveEyes(clientX, clientY) {
   const svgRect = avatarSvg.getBoundingClientRect();
-  const viewBoxScale = 480 / svgRect.width; // svg viewBox is 480x480
+  const viewBoxScale = 620 / svgRect.width; // svg viewBox is 620 wide
 
   eyes.forEach(({ group, pupil, glint }) => {
     const cx = parseFloat(group.dataset.cx);
@@ -200,8 +203,8 @@ function idleLoop() {
     eyes.forEach(({ group, pupil, glint }) => {
       const cx = parseFloat(group.dataset.cx);
       const cy = parseFloat(group.dataset.cy);
-      const px = cx + Math.cos(idleAngle) * 2;
-      const py = cy + Math.sin(idleAngle * 0.6) * 1.2;
+      const px = cx + Math.cos(idleAngle) * 2.6;
+      const py = cy + Math.sin(idleAngle * 0.6) * 1.6;
       pupil.setAttribute("cx", px);
       pupil.setAttribute("cy", py);
       glint.setAttribute("cx", px - 4);

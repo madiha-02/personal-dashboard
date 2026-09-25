@@ -21,19 +21,6 @@
 
   <aside class="sidebar" id="sidebar">
     <div class="profile">
-      <div class="avatar-wrap" id="avatarWrap">
-        <img class="avatar-photo" src="assets/avatar.jpg" alt="Cartoon avatar of Madiha">
-        <svg class="avatar-eyes" id="avatarSvg" viewBox="0 0 480 480" role="img" aria-label="Cursor-tracking eyes">
-          <g class="eye" id="eyeL" data-cx="128" data-cy="248">
-            <circle class="pupil" id="pupilL" cx="128" cy="248" r="27"/>
-            <circle class="pupil-glint" id="glintL" cx="117" cy="236" r="6"/>
-          </g>
-          <g class="eye" id="eyeR" data-cx="271" data-cy="244">
-            <circle class="pupil" id="pupilR" cx="271" cy="244" r="27"/>
-            <circle class="pupil-glint" id="glintR" cx="260" cy="232" r="6"/>
-          </g>
-        </svg>
-      </div>
       <h1 class="profile-name">Madiha Shaikh</h1>
       <p class="profile-title">Frontend-focused Software Developer</p>
       <p class="profile-location">📍 Mapusa, Goa, India</p>
@@ -73,26 +60,45 @@
         <h2>About Me</h2>
         <p class="eyebrow">Who I am</p>
       </header>
-      <div class="card">
-        <p>
-          Hi, I'm Madiha — a Software Developer based in Mapusa, Goa, who likes building things
-          that work smoothly on both the front end and the systems behind it. My focus is React
-          and React Native, but day to day that stretches into Next.js, TypeScript, and the
-          backend APIs that feed them.
-        </p>
-        <p>
-          At my current job I ship features across the whole stack: server-rendered pages,
-          video playback, subscription billing, accessibility, localization, a mobile app that
-          shares almost all of its code with the web app, and the CI/CD pipeline that ships it
-          all. I like the kind of problem where "make it work" and "make it work well" are the
-          same requirement.
-        </p>
-        <p>
-          Outside of assigned work, I build small full-stack side projects to learn new corners
-          of the stack — see the <button class="link-btn" data-goto="projects">Projects</button>
-          tab. This site itself is one of them: no framework, no build step, just HTML, CSS and
-          JavaScript, hosted for free.
-        </p>
+      <div class="card hero-card">
+        <div class="hero-text">
+          <p>
+            Hi, I'm Madiha — a Software Developer based in Mapusa, Goa, who likes building things
+            that work smoothly on both the front end and the systems behind it. My focus is React
+            and React Native, but day to day that stretches into Next.js, TypeScript, and the
+            backend APIs that feed them.
+          </p>
+          <p>
+            At my current job I ship features across the whole stack: server-rendered pages,
+            video playback, subscription billing, accessibility, localization, a mobile app that
+            shares almost all of its code with the web app, and the CI/CD pipeline that ships it
+            all. I like the kind of problem where "make it work" and "make it work well" are the
+            same requirement.
+          </p>
+          <p>
+            Outside of assigned work, I build small full-stack side projects to learn new corners
+            of the stack — see the <button class="link-btn" data-goto="projects">Projects</button>
+            tab. This site itself is one of them: no framework, no build step, just HTML, CSS and
+            JavaScript, hosted for free.
+          </p>
+          <div class="hero-tagline">
+            <span class="hero-tagline-label">Currently building at</span>
+            <span class="hero-tagline-brand">Kilowott</span>
+          </div>
+        </div>
+        <div class="hero-portrait">
+          <img class="hero-photo" src="assets/hero.png" alt="Illustrated portrait of Madiha">
+          <svg class="hero-eyes" id="heroEyesSvg" viewBox="0 0 620 1863" role="img" aria-label="Cursor-tracking eyes">
+            <g class="eye" id="eyeL" data-cx="162" data-cy="336">
+              <circle class="pupil" id="pupilL" cx="162" cy="336" r="33"/>
+              <circle class="pupil-glint" id="glintL" cx="150" cy="320" r="9"/>
+            </g>
+            <g class="eye" id="eyeR" data-cx="340" data-cy="329">
+              <circle class="pupil" id="pupilR" cx="340" cy="329" r="33"/>
+              <circle class="pupil-glint" id="glintR" cx="325" cy="313" r="9"/>
+            </g>
+          </svg>
+        </div>
       </div>
 
       <div class="skills-card card">
