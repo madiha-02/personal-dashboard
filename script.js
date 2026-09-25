@@ -4,7 +4,7 @@
 // ---------------------------------------------------------------------------
 const CONFIG = {
   name: "Madiha Shaikh",
-  title: "Frontend-focused Software Developer",
+  title: "Software Developer",
   location: "Mapusa, Goa, India",
   email: "madihashaikh2245@gmail.com",
   github: "https://github.com/madiha-02",
