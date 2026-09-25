@@ -381,8 +381,8 @@ const RULES = [
     reply: `A couple of highlights: "Fatal Press" (a React news app) and "Text Converter" (a JS text-utility tool) — both mine. Check the Projects tab for details and source links, more are on the way.`
   },
   {
-    keywords: ["contact", "email", "reach", "hire", "available", "linkedin"],
-    reply: `Best way to reach me is email: ${CONFIG.email}, or check my GitHub profile linked in the sidebar. Full details in the Contact tab.`
+    keywords: ["contact", "email", "reach", "hire", "available", "linkedin", "phone", "number", "call"],
+    reply: `You can reach me at ${CONFIG.email} or +91 ${CONFIG.phone.slice(0, 5)} ${CONFIG.phone.slice(5)}. My GitHub and LinkedIn are linked in the sidebar — full details in the Contact tab.`
   },
   {
     keywords: ["location", "based", "where", "goa", "mapusa"],
