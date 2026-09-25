@@ -754,7 +754,7 @@ button {
     top: -60px;
     left: 100%;
     margin: 0 0 0 88px;
-    width: 320px;
+    width: 250px;
   }
 
   /* The portrait is absolutely positioned, so it doesn't add to #about's own
@@ -762,7 +762,7 @@ button {
      shoe-bottom pixel exactly, with zero margin. Real browsers (scrollbar
      width, zoom, subpixel rounding) can then crop the last few px. This pads
      well past her actual bottom edge so that can't happen. */
-  #about { padding-bottom: 220px; }
+  #about { padding-bottom: 40px; }
 }
 
 @media (max-width: 880px) {
