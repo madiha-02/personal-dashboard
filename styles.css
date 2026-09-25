@@ -78,6 +78,9 @@ button {
   text-align: center;
 }
 
+/* Static base sized to fully cover the artwork's own iris+pupil at every possible
+   pupil offset, so movement never uncovers the original drawn eye underneath. */
+.iris-base { fill: #a05b22; }
 .pupil { fill: #3a2416; transition: transform 0.02s linear; }
 .pupil-glint { fill: #fff; opacity: 0.9; }
 
@@ -254,6 +257,7 @@ button {
 /* ---------- Hero (About) ---------- */
 
 .hero-card {
+  position: relative;
   display: flex;
   align-items: flex-end;
   padding: 0;
@@ -725,6 +729,26 @@ button {
   z-index: 54;
   opacity: 0;
   transition: opacity 0.22s ease;
+}
+
+/* On wide screens there's real open space to the right of the content column —
+   let her stand there fully free of the card, instead of breaking its frame. */
+@media (min-width: 1600px) {
+  .hero-card { padding: 32px 34px; }
+
+  .hero-text {
+    flex: 1 1 auto;
+    max-width: 600px;
+    padding: 0;
+  }
+
+  .hero-portrait {
+    position: absolute;
+    top: -20px;
+    left: 100%;
+    margin: 0 0 0 40px;
+    width: 320px;
+  }
 }
 
 @media (max-width: 880px) {

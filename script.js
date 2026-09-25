@@ -150,9 +150,9 @@ const eyes = [
   { group: document.getElementById("eyeR"), pupil: document.getElementById("pupilR"), glint: document.getElementById("glintR") }
 ];
 const avatarSvg = document.getElementById("heroEyesSvg");
-// The overlay pupils sit on top of hand-drawn eyes in the photo, which leaves very
-// little room to move before spilling outside the original eye outline — keep this small.
-const MAX_PUPIL_OFFSET = 8;
+// A static iris-colored base (r=40) sits under the moving pupil (r=27), fully covering
+// the artwork's own eye at any offset up to 13px — safe margin for the pupil to travel.
+const MAX_PUPIL_OFFSET = 12;
 
 function moveEyes(clientX, clientY) {
   const svgRect = avatarSvg.getBoundingClientRect();
