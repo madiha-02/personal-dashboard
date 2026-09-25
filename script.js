@@ -8,7 +8,8 @@ const CONFIG = {
   location: "Mapusa, Goa, India",
   email: "madihashaikh2245@gmail.com",
   github: "https://github.com/madiha-02",
-  linkedin: "", // add your LinkedIn profile URL here once ready
+  linkedin: "https://www.linkedin.com/in/madiha-shaikh-38b108288",
+  phone: "8010964109",
 
   skills: [
     "React", "React Native", "Next.js", "TypeScript", "JavaScript", "Node.js",
@@ -313,6 +314,10 @@ projectGrid.appendChild(morePlaceholder);
 // ---------------------------------------------------------------------------
 document.getElementById("contactEmailValue").textContent = CONFIG.email;
 document.getElementById("contactEmail").href = `mailto:${CONFIG.email}`;
+
+document.getElementById("contactPhoneValue").textContent =
+  `+91 ${CONFIG.phone.slice(0, 5)} ${CONFIG.phone.slice(5)}`;
+document.getElementById("contactPhone").href = `tel:+91${CONFIG.phone}`;
 
 const linkedinLinkTop = document.getElementById("linkedinLink");
 const linkedinContact = document.getElementById("contactLinkedin");
