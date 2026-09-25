@@ -84,6 +84,8 @@ button {
   text-align: center;
 }
 
+.mobile-profile { display: none; }
+
 /* Static base sized to fully cover the artwork's own iris+pupil at every possible
    pupil offset, so movement never uncovers the original drawn eye underneath. */
 .iris-base { fill: #a05b22; }
@@ -776,8 +778,12 @@ button {
 
   .nav-toggle { display: flex; }
 
+  .mobile-profile { display: block; margin-bottom: 22px; }
+  .sidebar .profile { display: none; }
+
   .sidebar {
     z-index: 55;
+    padding-top: 74px;
     transform: translateX(-100%);
     transition: transform 0.22s ease;
     box-shadow: var(--shadow);

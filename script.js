@@ -53,6 +53,23 @@ const CONFIG = {
 
   projects: [
     {
+      name: "Ammam",
+      description: "A React Native app built for a client, published on the Play Store. Sole frontend developer, built with Tamagui for the UI layer.",
+      tags: ["React Native", "Tamagui"],
+      github: null,
+      live: "https://play.google.com/store/apps/details?id=no.ammam&hl=en_IN",
+      liveLabel: "View on Play Store →",
+      preview: "assets/projects/ammam.png"
+    },
+    {
+      name: "Skilly AI",
+      description: "A Next.js web app built as part of a small development team, using TypeScript and Material UI.",
+      tags: ["Next.js", "TypeScript", "Material UI"],
+      github: null,
+      live: "https://www.skillyai.com/",
+      preview: "assets/projects/skilly.png"
+    },
+    {
       name: "Fatal Press — News App",
       description: "A news reading application built with React, focused on clean article browsing and a fast, responsive UI.",
       tags: ["React", "JavaScript"],
@@ -269,11 +286,11 @@ function openProjectModal(project) {
       </div>
       ${project.preview
         ? `<img class="modal-preview-img" src="${project.preview}" alt="${project.name} screenshot">`
-        : `<div class="modal-preview">Live UI preview coming soon — for now, browse the source on GitHub.</div>`
+        : `<div class="modal-preview">${project.github ? "Live UI preview coming soon — for now, browse the source on GitHub." : "Client project — source is private."}</div>`
       }
       <div class="modal-links">
-        <a href="${project.github}" target="_blank" rel="noopener">View source on GitHub →</a>
-        ${project.live ? `<a href="${project.live}" target="_blank" rel="noopener">Live demo →</a>` : ""}
+        ${project.github ? `<a href="${project.github}" target="_blank" rel="noopener">View source on GitHub →</a>` : ""}
+        ${project.live ? `<a href="${project.live}" target="_blank" rel="noopener">${project.liveLabel || "Live demo →"}</a>` : ""}
       </div>
     </div>
   `;
