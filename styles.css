@@ -321,7 +321,6 @@ button {
   display: block;
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 25px 30px rgba(0, 0, 0, 0.5));
 }
 
 .hero-eyes {
