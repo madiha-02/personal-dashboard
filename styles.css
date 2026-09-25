@@ -257,7 +257,7 @@ button {
   display: flex;
   align-items: flex-end;
   padding: 0;
-  overflow: hidden;
+  overflow: visible; /* let the portrait spill past the card's own border, on purpose */
 }
 
 .hero-text {
@@ -300,6 +300,10 @@ button {
   flex: 0 0 280px;
   width: 280px;
   align-self: flex-end;
+  /* pull past the card's own edge on three sides so she visibly breaks the frame
+     instead of sitting boxed inside it, and nothing crops her feet */
+  margin: -26px -50px 0 0;
+  z-index: 1;
 }
 
 .hero-photo {
@@ -746,7 +750,7 @@ button {
   .timeline-date { margin-left: 0; }
 
   .hero-card { flex-direction: column-reverse; align-items: center; }
-  .hero-portrait { width: 220px; flex: none; align-self: center; margin-top: 12px; }
+  .hero-portrait { width: 220px; flex: none; align-self: center; margin: 12px 0 0 0; }
   .hero-text { padding: 26px 24px; text-align: left; }
   .hero-tagline { margin-top: 18px; }
 }
