@@ -451,6 +451,19 @@ button {
 
 /* ---------- Projects ---------- */
 
+.project-group-title {
+  color: var(--text-faint);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 32px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.project-group-title:first-of-type { margin-top: 0; }
+
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -477,27 +490,6 @@ button {
   transform: translateY(-3px);
   border-color: rgba(255, 61, 154, 0.4);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 24px rgba(255, 61, 154, 0.18);
-}
-
-.project-category {
-  display: inline-block;
-  align-self: flex-start;
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 3px 10px;
-  border-radius: 999px;
-  margin-bottom: 8px;
-  color: var(--accent-3);
-  background: rgba(56, 211, 248, 0.12);
-  border: 1px solid rgba(56, 211, 248, 0.3);
-}
-
-.project-category--client {
-  color: var(--gold);
-  background: rgba(255, 209, 102, 0.12);
-  border-color: rgba(255, 209, 102, 0.3);
 }
 
 .project-card h3 { font-size: 1.1rem; font-weight: 700; }

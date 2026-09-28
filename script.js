@@ -25,10 +25,11 @@ const CONFIG = {
       org: "Kilowott",
       date: "Jun 2024 – Present",
       bullets: [
-        "Built Next.js SSR frontend features including a Mux-powered video player and Stripe subscription billing flows",
+        "Delivered React Native and Next.js apps for multiple external clients, including map/location integrations and Material UI dashboards",
+        "Built Next.js SSR frontend features, including a Mux-powered video player and Stripe subscription billing",
         "Implemented WCAG AA accessibility improvements and Norwegian localization",
-        "Developed a React Native / Expo mobile app sharing 98% of its code with the web app",
-        "Built backend APIs with Fastify and Prisma/PostgreSQL, including Stripe webhook handling",
+        "Developed a React Native / Expo app sharing 98% of its codebase with the web app",
+        "Built Fastify APIs with Prisma/PostgreSQL, including Stripe webhook handling",
         "Set up and maintained GitHub Actions CI/CD pipelines"
       ]
     },
@@ -38,8 +39,8 @@ const CONFIG = {
       role: "Web Developer Intern",
       date: "Jul 2023 – Apr 2024",
       bullets: [
-        "Built responsive React components in an Agile sprint cycle",
-        "Took part in peer code reviews and iterative feature delivery"
+        "Built responsive React components within an Agile sprint cycle",
+        "Collaborated on peer code reviews and iterative feature delivery"
       ]
     },
     {
@@ -174,6 +175,33 @@ function showSection(id) {
   // section's own id="about" — some browsers auto-scroll to a same-named element
   // the instant replaceState sets a matching fragment, causing an unwanted jump).
   if (history.replaceState) history.replaceState(null, "", "#section-" + id);
+  const activePanel = document.querySelector(`.panel[data-section="${id}"]`);
+  if (activePanel) revealPanel(activePanel);
+}
+
+// Fades + rises each panel's own cards/list-items/rows into place the first time
+// that panel becomes active. Only fires once per panel (data-revealed guard), and
+// runs after the panel is already display:block so elements have real geometry —
+// doing this while still display:none was the earlier ScrollTrigger approach's
+// problem: a hidden element's position always satisfies a scroll-position check,
+// so the whole animation played out (and finished) invisibly before the panel
+// was ever shown.
+function revealPanel(panel) {
+  if (!window.gsap || panel.dataset.revealed) return;
+  panel.dataset.revealed = "1";
+
+  const targets = panel.querySelectorAll(".panel-header, .card, .timeline-item, .project-group-title, .project-card, .contact-row");
+  const siblingIndex = new Map();
+  targets.forEach(el => {
+    const parent = el.parentElement;
+    const index = siblingIndex.get(parent) || 0;
+    siblingIndex.set(parent, index + 1);
+    gsap.fromTo(
+      el,
+      { opacity: 0, y: 38, scale: 0.96 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.7, delay: Math.min(index, 6) * 0.11, ease: "power2.out" }
+    );
+  });
 }
 
 navLinks.forEach(link => {
@@ -231,6 +259,18 @@ function moveEyes(clientX, clientY) {
     pupil.setAttribute("cy", py);
     glint.setAttribute("cx", px - 4);
     glint.setAttribute("cy", py - 4.5);
+  });
+}
+
+// Gentle continuous float on the portrait itself, purely cosmetic — falls back to
+// no motion (portrait stays put, still fully visible) if GSAP fails to load.
+if (window.gsap) {
+  gsap.to(".hero-portrait", {
+    y: 16,
+    duration: 2.2,
+    ease: "sine.inOut",
+    yoyo: true,
+    repeat: -1
   });
 }
 
@@ -305,13 +345,8 @@ CONFIG.experience.forEach(item => {
 // ---------------------------------------------------------------------------
 // Populate Projects
 // ---------------------------------------------------------------------------
-const projectGrid = document.getElementById("projectGrid");
-
-function categoryBadge(project) {
-  if (!project.category) return "";
-  const modifier = project.category.startsWith("Client") ? " project-category--client" : "";
-  return `<span class="project-category${modifier}">${project.category}</span>`;
-}
+const clientProjectGrid = document.getElementById("clientProjectGrid");
+const personalProjectGrid = document.getElementById("personalProjectGrid");
 
 function openProjectModal(project) {
   const overlay = document.createElement("div");
@@ -319,7 +354,6 @@ function openProjectModal(project) {
   overlay.innerHTML = `
     <div class="modal-panel" role="dialog" aria-modal="true" aria-label="${project.name} details">
       <button class="modal-close" aria-label="Close">&times;</button>
-      ${categoryBadge(project)}
       <h3>${project.name}</h3>
       <p>${project.description}</p>
       <div class="chip-row project-tags">
@@ -353,7 +387,6 @@ CONFIG.projects.forEach(project => {
   const card = document.createElement("button");
   card.className = "project-card";
   card.innerHTML = `
-    ${categoryBadge(project)}
     <h3>${project.name}</h3>
     <p>${project.description}</p>
     <div class="project-tags chip-row">
@@ -362,13 +395,9 @@ CONFIG.projects.forEach(project => {
     <span class="cta">View details →</span>
   `;
   card.addEventListener("click", () => openProjectModal(project));
-  projectGrid.appendChild(card);
+  const grid = project.category && project.category.startsWith("Client") ? clientProjectGrid : personalProjectGrid;
+  grid.appendChild(card);
 });
-
-const morePlaceholder = document.createElement("div");
-morePlaceholder.className = "project-card placeholder";
-morePlaceholder.innerHTML = `<p>More projects coming soon</p>`;
-projectGrid.appendChild(morePlaceholder);
 
 // ---------------------------------------------------------------------------
 // Contact section
@@ -478,6 +507,9 @@ function addBubble(text, sender) {
   div.textContent = text;
   chatWindow.appendChild(div);
   chatWindow.scrollTop = chatWindow.scrollHeight;
+  if (window.gsap) {
+    gsap.fromTo(div, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.32, ease: "power2.out" });
+  }
 }
 
 function respond(message) {
@@ -516,3 +548,17 @@ SUGGESTIONS.forEach(text => {
 });
 
 addBubble(`Hi, I'm ${CONFIG.name.split(" ")[0]}! Ask me anything about my background — try one of the suggestions below.`, "bot");
+
+// ---------------------------------------------------------------------------
+// Sidebar / mobile profile reveal (always visible, not gated by panel switching)
+// ---------------------------------------------------------------------------
+// Optional polish: if GSAP fails to load (CDN blocked, offline, etc.) these
+// elements are already visible via normal CSS, so skipping this just means the
+// site is a little less animated, never broken or stuck invisible.
+if (window.gsap) {
+  gsap.fromTo(
+    ".profile",
+    { opacity: 0, y: 32, scale: 0.96 },
+    { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "power2.out", stagger: 0.08 }
+  );
+}
