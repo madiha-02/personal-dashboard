@@ -54,6 +54,7 @@ const CONFIG = {
   projects: [
     {
       name: "Ammam",
+      category: "Client work — Kilowott",
       description: "A React Native app built for a client, published on the Play Store. Sole frontend developer, built with Tamagui for the UI layer.",
       tags: ["React Native", "Tamagui"],
       github: null,
@@ -63,6 +64,7 @@ const CONFIG = {
     },
     {
       name: "Skilly AI",
+      category: "Client work — Kilowott",
       description: "A Next.js web app built as part of a small development team, using TypeScript and Material UI.",
       tags: ["Next.js", "TypeScript", "Material UI"],
       github: null,
@@ -70,7 +72,28 @@ const CONFIG = {
       preview: "assets/projects/skilly.png"
     },
     {
+      name: "Tarmed",
+      category: "Client work — Kilowott",
+      description: "A peer-to-peer delivery app built with React Native as part of a development team, connecting senders with travelers already headed their way. Includes live maps, route planning, and delivery tracking. Launched in Norway.",
+      tags: ["React Native", "Maps & Tracking"],
+      github: null,
+      live: "https://tarmed.no/",
+      liveLabel: "Visit site →",
+      preview: "assets/projects/tarmed.png"
+    },
+    {
+      name: "Uniquex",
+      category: "Client work — Kilowott",
+      description: "An internal admin dashboard built for a Kilowott client, using React.js and Material UI. It's gated behind a login system, so only the applications hub entry point is viewable without client credentials.",
+      tags: ["React", "Material UI"],
+      github: null,
+      live: "https://login.uniquex.com/cas/login",
+      liveLabel: "View login portal →",
+      preview: "assets/projects/uniquex.png"
+    },
+    {
       name: "Fatal Press — News App",
+      category: "Personal project",
       description: "A news reading application built with React, focused on clean article browsing and a fast, responsive UI.",
       tags: ["React", "JavaScript"],
       github: "https://github.com/madiha-02/Fatal-press-NewsApp-",
@@ -79,10 +102,21 @@ const CONFIG = {
     },
     {
       name: "Text Converter",
-      description: "A utility web app for quick text transformations — a small, focused tool built to sharpen core JS fundamentals.",
-      tags: ["JavaScript", "HTML/CSS"],
+      category: "Personal project",
+      description: "A text utility app with case conversion, JSON formatting, and Base64 encoding — built with React to sharpen core fundamentals.",
+      tags: ["React", "Bootstrap"],
       github: "https://github.com/madiha-02/text-converter",
-      live: null
+      live: "https://text-converter-henna.vercel.app/",
+      preview: "assets/projects/text-converter.png"
+    },
+    {
+      name: "Movie Store",
+      category: "Personal project",
+      description: "A movie and TV discovery app built with React 19 and TypeScript, using the TMDB API for trending titles and recommendations, with light/dark theming via MUI.",
+      tags: ["React", "TypeScript", "Material UI"],
+      github: "https://github.com/madiha-02/Movie",
+      live: "https://movie-two-virid.vercel.app/",
+      preview: "assets/projects/movie.png"
     }
   ]
 };
@@ -273,12 +307,19 @@ CONFIG.experience.forEach(item => {
 // ---------------------------------------------------------------------------
 const projectGrid = document.getElementById("projectGrid");
 
+function categoryBadge(project) {
+  if (!project.category) return "";
+  const modifier = project.category.startsWith("Client") ? " project-category--client" : "";
+  return `<span class="project-category${modifier}">${project.category}</span>`;
+}
+
 function openProjectModal(project) {
   const overlay = document.createElement("div");
   overlay.className = "modal-overlay";
   overlay.innerHTML = `
     <div class="modal-panel" role="dialog" aria-modal="true" aria-label="${project.name} details">
       <button class="modal-close" aria-label="Close">&times;</button>
+      ${categoryBadge(project)}
       <h3>${project.name}</h3>
       <p>${project.description}</p>
       <div class="chip-row project-tags">
@@ -312,6 +353,7 @@ CONFIG.projects.forEach(project => {
   const card = document.createElement("button");
   card.className = "project-card";
   card.innerHTML = `
+    ${categoryBadge(project)}
     <h3>${project.name}</h3>
     <p>${project.description}</p>
     <div class="project-tags chip-row">
